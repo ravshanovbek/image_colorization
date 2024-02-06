@@ -2,6 +2,7 @@
 # IMAGE COLORIZATION
 
 ## We present you ultimate image colorization DL model from black and white
+Please, also check up the presentation in PDF : [Image colorization project.pdf](https://github.com/ravshanovbek/image_colorization/files/14186313/Image.colorization.project.pdf)
 
 For the model, the pytorch was used to train the model. 
 

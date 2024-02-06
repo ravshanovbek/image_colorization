@@ -50,11 +50,11 @@ class MyModel(nn.Module):
         return x
 
 # defining training dataset
-path_train_gray = '/Users/bekhzodravshanov/Desktop/lessons/openCV/archive-2/train/gray'
-path_train_rgb = '/Users/bekhzodravshanov/Desktop/lessons/openCV/archive-2/train/rgb'
+path_train_gray = 'path'
+path_train_rgb = 'path'
 # defining tresting data
-path_test_gray = '/Users/bekhzodravshanov/Desktop/lessons/openCV/archive-2/test/gray'
-path_test_rgb = '/Users/bekhzodravshanov/Desktop/lessons/openCV/archive-2/test/rgb'
+path_test_gray = 'path'
+path_test_rgb = 'path'
 alist = os.listdir()
 # loading imagepath_train_rgb
 
@@ -120,10 +120,10 @@ def test_loop(dataloader, model):
                 output_image = outputs[0].cpu().numpy().transpose(1, 2, 0)
                 #output_image = (output_image + 1) / 2.0  # De-normalize to [0, 1]
                 output_image = (output_image * 255).astype(np.uint8)
-                cv2.imwrite(f'/Users/bekhzodravshanov/Desktop/lessons/openCV/archive-2/saved/{datetime.now()}.png', cv2.cvtColor(output_image, cv2.COLOR_RGB2BGR))
+                #cv2.imwrite(f'{datetime.now()}.png', cv2.cvtColor(output_image, cv2.COLOR_RGB2BGR))
                 targets = targets[0].cpu().numpy().transpose(1, 2, 0)
                 targets = (targets * 255).astype(np.uint8)
-                cv2.imwrite(f'/Users/bekhzodravshanov/Desktop/lessons/openCV/archive-2/saved/{datetime.now()}.png', cv2.cvtColor(targets, cv2.COLOR_RGB2BGR))
+                cv2.imwrite(f'{datetime.now()}.png', cv2.cvtColor(targets, cv2.COLOR_RGB2BGR))
 
 
 # Training and testing loop

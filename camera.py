@@ -41,7 +41,7 @@ class MyModel(nn.Module):
 
 # setting the model out
 model = MyModel()
-pretrained_model_path = '/Users/bekhzodravshanov/Desktop/PC/IT_CS/Colorize/final_pretrained_model.pth'
+pretrained_model_path = 'path_of_pretrained_model.pth'
 
 if torch.cuda.is_available():
     checkpoint = torch.load(pretrained_model_path)
@@ -64,7 +64,8 @@ while True:
 
     # squaring, mirroring, black-whitening, rescaling 128x128
     frame = np.array(frame)
-    frame = np.flip(frame, 1)
+    # flip the frame like a mirrir horizontal direction 
+    #frame = np.flip(frame, 1)
     frame = frame[:,int(len(frame[0])//2  - int(len(frame)*0.5)):int(len(frame[0])//2 + int(len(frame)*0.5))]
     frame = cv2.resize(frame, (128,128))
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -73,6 +74,7 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
 
         break
+
 frame = torch.from_numpy(frame).permute(2, 0, 1).float()  # Assuming HWC to CHW format conversion
 # transfer from [3,128, 128] to [1,3,128,128] 1 is batch here
 frame = frame.unsqueeze(0) / 255
@@ -91,5 +93,3 @@ cv2.imwrite('save1.png', output)
 video.release()
 # Destroy all the windows 
 cv2.destroyAllWindows() 
-
-print("gello")

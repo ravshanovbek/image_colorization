@@ -27,8 +27,6 @@ Please, note that all directory paths are in default "path". Make sure setting t
 before running the program.
 
 
-
-
 ## Contributing
 Please, feel free to leave suggestions
 Information for those who want to contribute to the project, including guidelines for code style, how to report issues, and how to submit pull requests.
@@ -37,6 +35,20 @@ Information for those who want to contribute to the project, including guideline
 input gray scale image:![BW_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/9d3e2a28-cccf-4ead-b0aa-c7fcb677ef99)
 Predicted output: ![predicted_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/8ae8e636-eaaf-4fca-ae6d-de8d8583051a)
 Original image:![rgb_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/f69f1a3b-fc52-4f36-993f-e5f50da161a9)
+
+
+## vesions from the enviropnment
+### Development Dependencies:
+- Python 3.11
+
+### Runtime Dependencies:
+- numpy (version 1.21.5)
+- pandas (version 1.4.4)
+- matplotlib (version 3.5.2)
+- cv2 (version 4.7.0)
+- torchvision (version 0.15.0)
+- torch (version 2.0.0)
+
 
 ## Credits
 Inspirations:

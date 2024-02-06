@@ -34,8 +34,7 @@ Please, feel free to leave suggestions
 Information for those who want to contribute to the project, including guidelines for code style, how to report issues, and how to submit pull requests.
 
 ## Results 
-input gray scale image                  Predicted Image                  original Image \n
-![BW_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/9d3e2a28-cccf-4ead-b0aa-c7fcb677ef99)
+input gray scale image:![BW_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/9d3e2a28-cccf-4ead-b0aa-c7fcb677ef99)
 ![predicted_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/8ae8e636-eaaf-4fca-ae6d-de8d8583051a)
 ![rgb_image](https://github.com/ravshanovbek/image_colorization/assets/71225914/f69f1a3b-fc52-4f36-993f-e5f50da161a9)
 

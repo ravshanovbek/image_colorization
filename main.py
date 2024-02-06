@@ -89,45 +89,54 @@ optimizer = AdamW(model.parameters(), lr=learning_rate)
 #metric = torchmetrics.Accuracy(task='multiclass',num_classes=10)
 
 
+
 # Training loop
-def train_loop(dataloader, model, loss_fn, optimizer):
+def train_loop(dataloader, model, loss_fn, optimizer, epochs):
     model.train()
     len_dataloader = len(dataloader)
     for batch_idx, (inputs, targets) in enumerate(dataloader):
         inputs, targets = inputs.to(device), targets.to(device)
         inputs, targets = inputs.to(device), targets.to(device)
-        optimizer.zero_grad()
         outputs = model(inputs)
-        
+        #print('train output', outputs.shape)
+
         loss = loss_fn(outputs, targets)
         loss.backward()
         optimizer.step()
-        if batch_idx % 10 == 0:
-            print(f'Train Batch [{batch_idx}/{len_dataloader}]\tLoss: {loss.item():.4f}')
+        optimizer.zero_grad()
+        if batch_idx == 0 and epochs % 10 == 0:
+            #print(f'Train Batch [{batch_idx}/{len_dataloader}]\tLoss: {loss.item():.4f}')
+            print(f'{epochs}   {loss.item()}')
 
 
 # Testing loop
-def test_loop(dataloader, model):
+def test_loop(dataloader, model, epochs):
     model.eval()
     with torch.no_grad():
         for batch_idx, (inputs, targets) in enumerate(dataloader):
             inputs, targets = inputs.to(device), targets.to(device)
+            #print('input image', inputs[0])
+            #print('test input', inputs.shape)
             outputs = model(inputs)
-            
-            if batch_idx == 4:
-                print(targets.size())
-                print(outputs.size())
+            #print('test output', outputs.shape)
+            if batch_idx == 0 and epochs % 10 == 0:
                 output_image = outputs[0].cpu().numpy().transpose(1, 2, 0)
                 #output_image = (output_image + 1) / 2.0  # De-normalize to [0, 1]
                 output_image = (output_image * 255).astype(np.uint8)
-                #cv2.imwrite(f'{datetime.now()}.png', cv2.cvtColor(output_image, cv2.COLOR_RGB2BGR))
+                cv2.imwrite(f'/content/drive/MyDrive/project/saved/{datetime.now()}.png', cv2.cvtColor(output_image, cv2.COLOR_RGB2BGR))
                 targets = targets[0].cpu().numpy().transpose(1, 2, 0)
                 targets = (targets * 255).astype(np.uint8)
-                cv2.imwrite(f'{datetime.now()}.png', cv2.cvtColor(targets, cv2.COLOR_RGB2BGR))
+                cv2.imwrite(f'/content/drive/MyDrive/project/saved/{datetime.now()}.png', cv2.cvtColor(targets, cv2.COLOR_RGB2BGR))
+                final_model_path = '/content/drive/MyDrive/project/final_pretrained_model.pth'
+                torch.save(model.state_dict(), f'/content/drive/MyDrive/project/final_pretrained_model_{epochs}.pth')
 
 
 # Training and testing loop
 for epoch in range(epochs):
-    print(f'Epoch [{epoch}/{epochs}]')
-    train_loop(train_dataloader, model, loss_fn, optimizer)
-    test_loop(test_dataloader, model)
+    #if epoch % 10 == 0:
+      #print(f'Epoch [{epoch}/{epochs}]')
+    train_loop(train_dataloader, model, loss_fn, optimizer, epoch)
+    test_loop(test_dataloader, model, epoch)
+
+final_model_path = '/content/drive/MyDrive/project/final_pretrained_model.pth'
+torch.save(model.state_dict(), final_model_path)

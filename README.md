@@ -17,13 +17,13 @@ Instructions on how to install and configure the project.
 
 ## Dataset
 https://drive.google.com/drive/folders/1GLBfynHhaQ2sAqG-Z5edLHecS0WVUE6n?usp=share_link
+or any kaggle dateset is legit, important thing is keep the right dimentions.
 
 ## Usage
 There are some pretrained models that are available and stored.
 Program should run in any machine if environment is valid, no GPU or CPU cpecifications are needed.
+Please, note that all directory paths are in default "path". Make sure setting them before running the program.
 
-
-Guidelines on how to use the project, including examples if applicable.
 
 ## Contributing
 Please, feel free to leave suggestions
@@ -32,12 +32,15 @@ Information for those who want to contribute to the project, including guideline
 
 
 ## Credits
+Inspirations:
+https://arxiv.org/abs/1801.04381 
+https://blog.research.google/2016/08/improving-inception-and-image.html
 
-Acknowledgments and credits for any resources, tools, or individuals who contributed to the project.
 
-## Contact
+
+## Contact and Licence
 FISHERMAN TEAM inc.
-Contact information for the project maintainer or team.
+
 
 
 
